@@ -1,0 +1,31 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  DATABASE_URL: "mysql://avnadmin:AVNS_5gxDqFtJ52ku2dmBbtM@mysql-3dee3dce-villa-amrita.a.aivencloud.com:23796/defaultdb?ssl-mode=REQUIRED"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install
+      - name: Run TypeScript
+        run: npm run typecheck
+      - name: Run ESLint
+        run: npm run lint
+      - name: Build project
+        run: npm run build
