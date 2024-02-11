@@ -4,12 +4,11 @@ const config = {
   parserOptions: {
     project: true,
   },
-  plugins: ["@typescript-eslint", "prettier"],
+  plugins: ["@typescript-eslint"],
   extends: [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
-    "prettier",
   ],
   rules: {
     // These opinionated rules are enabled in stylistic-type-checked above.
@@ -32,7 +31,6 @@ const config = {
         checksVoidReturn: { attributes: false },
       },
     ],
-    "prettier/prettier": ["error"],
   },
 };
 
