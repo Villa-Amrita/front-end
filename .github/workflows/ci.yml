@@ -25,13 +25,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 20.x
 
       - name: Installing dependencies
         run: npm install
 
       - name: Type checking
-        run: npm run type-check
+        run: npm run typecheck
 
       - name: Linting
         run: npm run lint
