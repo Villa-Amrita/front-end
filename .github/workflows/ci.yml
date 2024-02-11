@@ -1,10 +1,15 @@
-name: CI/CD
+name: Next.js CI/CD
 
 on:
   push:
-    branches: [main, develop]
+    branches:
+      - main
+      - develop
   pull_request:
-    branches: [main, develop]
+    branches:
+      - main
+      - develop
+      - feature/*
 
 env:
   DATABASE_URL: "mysql://avnadmin:AVNS_5gxDqFtJ52ku2dmBbtM@mysql-3dee3dce-villa-amrita.a.aivencloud.com:23796/defaultdb?ssl-mode=REQUIRED"
@@ -12,20 +17,24 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
+          node-version: 20
+
+      - name: Installing dependencies
         run: npm install
-      - name: Run TypeScript
-        run: npm run typecheck
-      - name: Run ESLint
+
+      - name: Type checking
+        run: npm run type-check
+
+      - name: Linting
         run: npm run lint
-      - name: Build project
+
+      - name: Building
         run: npm run build
