@@ -16,6 +16,15 @@ export default {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unnecessary-type-assertion
         "primary-light": chroma("#00B2B9").brighten().hex() as string,
         secondary: "#E3E0D9",
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unnecessary-type-assertion
+        "secondary-dark": chroma("#E3E0D9").darken().hex() as string,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unnecessary-type-assertion
+        "secondary-light": chroma("#E3E0D9").brighten().hex() as string,
+        complementary: "#03111d",
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unnecessary-type-assertion
+        "complementary-dark": chroma("#03111d").darken().hex() as string,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unnecessary-type-assertion
+        "complementary-light": chroma("#03111d").brighten().hex() as string,
       },
     },
   },
