@@ -21,6 +21,7 @@ export default function HomePage() {
             alt="Villa Amrita Logo"
             width={170}
             height={170}
+            loading="lazy"
           />
         </section>
         <div className="glass-overlay absolute top-0 h-screen w-full rounded-full" />
@@ -78,6 +79,7 @@ export default function HomePage() {
                   alt="Villa Amrita Logo"
                   width={700}
                   height={700}
+                  loading="lazy"
                 />
               </div>
             </div>
