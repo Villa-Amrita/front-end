@@ -21,7 +21,7 @@ export default function HomePage() {
             width={170}
             height={170}
           />
-          <div className="glass-overlay rounded-full" />
+          <div className="glass-overlay h-40 rounded-full" />
         </section>
         <BlankLine />
         <BlankLine />
@@ -90,7 +90,7 @@ export default function HomePage() {
 
             {/*Right Column*/}
             <div className="flex-1">
-              <div className="px-8 py-40">
+              <div className="px-8 py-36">
                 <h2 className="mb-4 text-6xl font-bold text-white">
                   Welcome to
                 </h2>
