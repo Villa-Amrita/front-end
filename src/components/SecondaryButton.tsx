@@ -6,7 +6,9 @@ interface SecondaryButtonProps {
 
 const PrimaryButton = ({ content }: SecondaryButtonProps) => {
   return (
-    <button className="btn-secondary btn-block h-full w-full">{content}</button>
+    <button className="btn-secondary btn-block h-full w-full rounded-md">
+      {content}
+    </button>
   );
 };
 

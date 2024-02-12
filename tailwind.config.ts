@@ -1,5 +1,6 @@
 import { type Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
+import chroma from "chroma-js";
 
 export default {
   content: ["./src/**/*.tsx"],
@@ -10,7 +11,11 @@ export default {
       },
       colors: {
         primary: "#00B2B9",
-        secondary: "#e3e0d9",
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unnecessary-type-assertion
+        "primary-dark": chroma("#00B2B9").darken().hex() as string,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unnecessary-type-assertion
+        "primary-light": chroma("#00B2B9").brighten().hex() as string,
+        secondary: "#E3E0D9",
       },
     },
   },

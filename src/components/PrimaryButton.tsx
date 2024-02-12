@@ -6,7 +6,9 @@ interface PrimaryButtonProps {
 
 const PrimaryButton = ({ content }: PrimaryButtonProps) => {
   return (
-    <button className="btn-primary btn-block h-full w-full">{content}</button>
+    <button className="btn-primary btn-block h-full w-full rounded-md">
+      {content}
+    </button>
   );
 };
 
