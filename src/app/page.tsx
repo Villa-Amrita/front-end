@@ -90,7 +90,7 @@ export default function HomePage() {
 
             {/*Right Column*/}
             <div className="flex-1">
-              <div className="px-8 py-36">
+              <div className="px-8 py-[7.5rem]">
                 <h2 className="mb-4 text-6xl font-bold text-white">
                   Welcome to
                 </h2>
