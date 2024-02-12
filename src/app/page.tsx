@@ -21,8 +21,8 @@ export default function HomePage() {
             width={170}
             height={170}
           />
-          <div className="glass-overlay rounded-full" />
         </section>
+        <div className="glass-overlay absolute top-0 h-screen w-full rounded-full" />
         <BlankLine />
         <BlankLine />
         <BlankLine />
@@ -90,7 +90,7 @@ export default function HomePage() {
 
             {/*Right Column*/}
             <div className="flex-1">
-              <div className="px-8 py-44">
+              <div className="px-8 py-36">
                 <h2 className="mb-4 text-6xl font-bold text-white">
                   Welcome to
                 </h2>
@@ -105,14 +105,14 @@ export default function HomePage() {
                 <section className="flex w-full space-x-4">
                   {/* Left Column */}
                   <div className="flex-1">
-                    <button className="from-primary-light hover:border-primary-light h-20 w-full rounded-lg border border-primary bg-gradient-to-tr to-primary-dark px-4 py-2 text-lg font-bold text-white transition-colors">
+                    <button className="h-20 w-full rounded-lg border border-primary bg-gradient-to-tr from-primary-light to-primary-dark px-4 py-2 text-lg font-bold text-white transition-colors hover:border-primary-light">
                       Get Started
                     </button>
                   </div>
 
                   {/* Right Column */}
                   <div className="flex-1">
-                    <button className="hover:border-primary-light hover:text-primary-light h-20 w-full rounded-lg border border-primary bg-none px-4 py-2 text-lg font-bold text-primary transition-colors">
+                    <button className="h-20 w-full rounded-lg border border-primary bg-none px-4 py-2 text-lg font-bold text-primary transition-colors hover:border-primary-light hover:text-primary-light">
                       Learn More
                     </button>
                   </div>
