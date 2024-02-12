@@ -21,8 +21,8 @@ export default function HomePage() {
             width={170}
             height={170}
           />
-          <div className="glass-overlay h-40 rounded-full" />
         </section>
+        <div className="glass-overlay absolute top-0 h-screen w-full rounded-full" />
         <BlankLine />
         <BlankLine />
         <BlankLine />
