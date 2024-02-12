@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .btn-primary {
-  @apply bg-primary border-primary hover:bg-primary-dark border text-white transition-colors;
+  @apply border border-primary bg-primary text-white transition-colors hover:border-primary-dark hover:bg-primary-dark;
 }
 
 .btn-secondary {
-  @apply text-primary border-primary hover:border-primary-dark hover:text-primary-dark border bg-white transition-colors;
+  @apply border border-primary bg-white text-primary transition-colors hover:border-primary-dark hover:text-primary-dark;
 }
 
 .btn-block {
