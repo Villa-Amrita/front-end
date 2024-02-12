@@ -9,3 +9,12 @@ This is the codebase repository for the Frontend of the website of Villa Amrita 
 ## Developers
 
 Sasvidu Ranthul Abesinghe Mudiyanselage - eyasa1979@gmail.com
+
+### Colors
+
+Villa Amrita Primary: #00B2B9
+Villa Amrita Secondary: #e3e0d9
+Violet: #7203FF
+Emerald: #0BCE83
+Azure: #33677d
+Background: #F6F5F5
