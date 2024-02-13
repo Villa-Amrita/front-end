@@ -29,6 +29,7 @@ const ButtonList = () => {
         <button
           className="h-20 w-full rounded-lg border border-primary bg-gradient-to-tr from-primary-light to-primary-dark px-4 py-2 text-lg font-bold text-white transition-colors hover:border-primary-light hover:text-slate-200"
           onClick={getStarted}
+          data-cy="get-started-button"
         >
           Get Started
         </button>

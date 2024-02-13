@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+const invalidNicOrPassportMessage = "NIC or Passport is in an invalid format";
+
 export const userSchema = z.object({
   firstName: z
     .string()
@@ -13,18 +15,15 @@ export const userSchema = z.object({
     z
       .string()
       .min(1, { message: "NIC or Passport number is required" })
-      .length(10, { message: "NIC or Passport is in an invalid format" })
+      .length(10, { message: invalidNicOrPassportMessage })
       .toLowerCase()
-      .regex(
-        /^\d{9}v$/,
-        "An NIC with 10 characters must have a trailing 'v' and other characters must be all numbers",
-      ),
+      .regex(/^\d{9}v$/, invalidNicOrPassportMessage),
 
     z
       .string()
       .min(1, { message: "NIC or Passport number is required" })
-      .length(12, { message: "NIC or Passport is in an invalid format" })
-      .regex(/^\d+$/, "An NIC with 12 characters must only contain numbers"),
+      .length(12, { message: invalidNicOrPassportMessage })
+      .regex(/^\d+$/, invalidNicOrPassportMessage),
   ]),
   email: z.string().email({ message: "Invalid email address" }),
   password: z
@@ -42,3 +41,28 @@ export const userSchema = z.object({
     message: "Confirm password is required",
   }),
 });
+
+export type User = z.infer<typeof userSchema>;
+
+export const validateUser = (user: User) => {
+  const validation = userSchema.safeParse(user);
+  if (validation.success === false) {
+    console.error("Validation error: ", validation.error);
+    const errors = validation.error.issues;
+    // Identify the first error
+    const firstError = errors[0];
+    if (firstError) {
+      alert(firstError.message);
+    } else {
+      alert("An unknown error occurred");
+    }
+    return false;
+  }
+
+  if (user.password !== user.confirmPassword) {
+    alert("Passwords do not match");
+    return false;
+  }
+
+  return true;
+};
