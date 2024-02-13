@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import BlankLine from "~/components/BlankLine";
 import GetStartedButton from "./components/GetStartedButton";
 import LearnMoreButton from "./components/LearnMoreButton";
