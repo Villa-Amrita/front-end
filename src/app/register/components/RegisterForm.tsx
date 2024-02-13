@@ -173,16 +173,16 @@ const RegisterForm = () => {
           <br />
           <div className="mt-4 space-x-4 text-center">
             <button
-              onClick={handleBack}
-              className="btn-secondary cursor-pointer rounded px-2 py-2 lg:px-6"
-            >
-              Back to Home
-            </button>
-            <button
               type="submit"
               className="btn-primary cursor-pointer rounded px-2 py-2 lg:px-6"
             >
               Create Account
+            </button>
+            <button
+              onClick={handleBack}
+              className="btn-secondary cursor-pointer rounded px-2 py-2 lg:px-6"
+            >
+              Back to Home
             </button>
           </div>
         </div>
