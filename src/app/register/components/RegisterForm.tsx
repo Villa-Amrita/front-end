@@ -77,6 +77,7 @@ const RegisterForm = () => {
   };
 
   return (
+
     <div className="absolute mb-8 mt-12 w-[95%] max-w-lg rounded border border-primary bg-white bg-opacity-50 p-8 shadow-md backdrop-blur-md backdrop-filter lg:mb-0 lg:mt-0 lg:border-none lg:bg-opacity-25">
       <h1 className="mb-8 text-center text-3xl font-bold lg:text-white">
         Register
