@@ -78,11 +78,11 @@ const RegisterForm = () => {
             />
           </label>
           <br />
-          <label htmlFor="uniqueID" className={label}>
+          <label htmlFor="nicOrPassport" className={label}>
             NIC/Passport No:
             <input
               type="text"
-              id="uniqueID"
+              id="nicOrPassport"
               value={nicOrPassport}
               onChange={(e) => setNicOrPassport(e.target.value)}
               required
