@@ -1,12 +1,21 @@
 "use client";
 
 import React, { type MouseEvent } from "react";
+import { useRouter } from "next/navigation";
+import { auth } from "config/firebase";
 import PrimaryButton from "~/components/PrimaryButton";
 
 const GetStartedButton = () => {
+  const router = useRouter();
+  const user = auth.currentUser;
+
   const getStarted = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    window.location.href = "/register";
+    if (user) {
+      router.push("/dashboard");
+    } else {
+      router.push("/register");
+    }
   };
 
   return (

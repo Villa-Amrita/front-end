@@ -1,17 +1,19 @@
 "use client";
 
-import React, { type MouseEvent } from "react";
+import React from "react";
+import Link from "next/link";
 import SecondaryButton from "~/components/SecondaryButton";
 
 const LearnMoreButton = () => {
-  const learnMore = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    window.location.href = "/about";
+  const learnMore = () => {
+    console.log("Learn More");
   };
 
   return (
     <div className="my-2 h-14 text-xl font-bold">
-      <SecondaryButton content="Learn More" handleClick={learnMore} />
+      <Link href="/about">
+        <SecondaryButton content="Learn More" handleClick={learnMore} />
+      </Link>
     </div>
   );
 };
