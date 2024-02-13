@@ -2,11 +2,15 @@
 
 import { useState, type MouseEvent, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { type z } from "zod";
+import { userSchema } from "~/app/Schema/userSchema";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "config/firebase";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const RegisterForm = () => {
+  type User = z.infer<typeof userSchema>;
+
   const router = useRouter();
 
   const [firstName, setFirstName] = useState("");
@@ -24,6 +28,29 @@ const RegisterForm = () => {
 
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
+
+    const user: User = {
+      firstName,
+      familyName,
+      nicOrPassport,
+      email,
+      password,
+      confirmPassword,
+    };
+
+    const validation = userSchema.safeParse(user);
+    if (validation.success === false) {
+      console.error("Validation error: ", validation.error);
+      const errors = validation.error.issues;
+      // Identify the first error
+      const firstError = errors[0];
+      if (firstError) {
+        alert(firstError.message);
+      } else {
+        alert("An unknown error occurred");
+      }
+      return;
+    }
 
     if (password !== confirmPassword) {
       alert("Passwords don't match");
