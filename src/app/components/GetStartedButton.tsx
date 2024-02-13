@@ -2,12 +2,11 @@
 
 import React, { type MouseEvent } from "react";
 import { useRouter } from "next/navigation";
-import { getAuth } from "firebase/auth";
+import { auth } from "config/firebase";
 import PrimaryButton from "~/components/PrimaryButton";
 
 const GetStartedButton = () => {
   const router = useRouter();
-  const auth = getAuth();
   const user = auth.currentUser;
 
   const getStarted = (e: MouseEvent<HTMLButtonElement>) => {
