@@ -2,15 +2,11 @@
 
 import { useState, type MouseEvent, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { type z } from "zod";
-import { userSchema } from "~/app/Schema/userSchema";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "config/firebase";
+import { type User, validateUser } from "~/app/Schema/userSchema";
+import { createUser } from "~/app/utils/Authentication";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const RegisterForm = () => {
-  type User = z.infer<typeof userSchema>;
-
   const router = useRouter();
 
   const [firstName, setFirstName] = useState("");
@@ -38,37 +34,12 @@ const RegisterForm = () => {
       confirmPassword,
     };
 
-    const validation = userSchema.safeParse(user);
-    if (validation.success === false) {
-      console.error("Validation error: ", validation.error);
-      const errors = validation.error.issues;
-      // Identify the first error
-      const firstError = errors[0];
-      if (firstError) {
-        alert(firstError.message);
-      } else {
-        alert("An unknown error occurred");
-      }
+    if (!validateUser(user)) {
       return;
     }
 
-    if (password !== confirmPassword) {
-      alert("Passwords don't match");
-      return;
-    }
-
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      router.push("/dashboard");
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error("Error registering user: ", error.message);
-        alert(error.message);
-      } else {
-        console.error("Unknown error registering user: ", error);
-        alert("An unknown error occurred");
-      }
-    }
+    await createUser(user);
+    router.push("/dashboard");
   };
 
   const handleBack = (e: MouseEvent<HTMLButtonElement>) => {

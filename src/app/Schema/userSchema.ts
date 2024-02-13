@@ -42,3 +42,28 @@ export const userSchema = z.object({
     message: "Confirm password is required",
   }),
 });
+
+export type User = z.infer<typeof userSchema>;
+
+export const validateUser = (user: User) => {
+  const validation = userSchema.safeParse(user);
+  if (validation.success === false) {
+    console.error("Validation error: ", validation.error);
+    const errors = validation.error.issues;
+    // Identify the first error
+    const firstError = errors[0];
+    if (firstError) {
+      alert(firstError.message);
+    } else {
+      alert("An unknown error occurred");
+    }
+    return false;
+  }
+
+  if (user.password !== user.confirmPassword) {
+    alert("Passwords don't match");
+    return false;
+  }
+
+  return true;
+};
