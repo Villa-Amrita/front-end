@@ -48,7 +48,7 @@ const RegisterForm = () => {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-secondary-light to-secondary-dark lg:bg-gradient-to-tr lg:from-complementary-light lg:to-complementary">
-      <div className="absolute mt-8 w-[95%] max-w-lg rounded border border-primary bg-white bg-opacity-50 p-8 shadow-md backdrop-blur-md backdrop-filter lg:mt-0 lg:border-none lg:bg-opacity-25">
+      <div className="absolute mb-8 mt-12 w-[95%] max-w-lg rounded border border-primary bg-white bg-opacity-50 p-8 shadow-md backdrop-blur-md backdrop-filter lg:mb-0 lg:mt-0 lg:border-none lg:bg-opacity-25">
         <h1 className="mb-8 text-center text-3xl font-bold lg:text-white">
           Register
         </h1>
@@ -152,7 +152,7 @@ const RegisterForm = () => {
               </button>
               <button
                 type="submit"
-                className="btn-primary cursor-pointer rounded px-4 py-2 lg:px-6"
+                className="btn-primary cursor-pointer rounded px-2 py-2 lg:px-6"
               >
                 Create Account
               </button>
