@@ -1,16 +1,19 @@
 "use client";
 
 import React, { type MouseEvent } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const ButtonList = () => {
+  const router = useRouter();
+
   const getStarted = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    window.location.href = "/register";
+    router.push("/register");
   };
 
-  const learnMore = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    window.location.href = "/about";
+  const learnMore = () => {
+    console.log("Learn More");
   };
 
   return (
@@ -27,12 +30,14 @@ const ButtonList = () => {
 
       {/* Right Column */}
       <div className="flex-1">
-        <button
-          className="h-20 w-full rounded-lg border border-primary bg-none px-4 py-2 text-lg font-bold text-primary transition-colors hover:border-primary-light hover:text-primary-light"
-          onClick={learnMore}
-        >
-          Learn More
-        </button>
+        <Link href="/about">
+          <button
+            className="h-20 w-full rounded-lg border border-primary bg-none px-4 py-2 text-lg font-bold text-primary transition-colors hover:border-primary-light hover:text-primary-light"
+            onClick={learnMore}
+          >
+            Learn More
+          </button>
+        </Link>
       </div>
     </section>
   );

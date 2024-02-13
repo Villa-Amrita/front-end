@@ -1,12 +1,15 @@
 "use client";
 
 import React, { type MouseEvent } from "react";
+import { useRouter } from "next/navigation";
 import PrimaryButton from "~/components/PrimaryButton";
 
 const GetStartedButton = () => {
+  const router = useRouter();
+
   const getStarted = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    window.location.href = "/register";
+    router.push("/register");
   };
 
   return (
