@@ -64,7 +64,7 @@ export default function HomePage() {
         <BlankLine />
         <BlankLine />
         <section className="z-10 w-3/5">
-          <GetStartedButton />
+          <GetStartedButton data-cy="get-started-button" />
           <LearnMoreButton />
         </section>
       </div>
@@ -102,7 +102,7 @@ export default function HomePage() {
                   <span className="text-primary">Bentota, Sri Lanka</span>.
                 </p>
                 <BlankLine />
-                <ButtonList />
+                <ButtonList data-cy="button-list" />
               </div>
             </div>
           </div>
