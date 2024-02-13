@@ -15,8 +15,8 @@ const RegisterForm = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const inputField =
-    "text-black block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm";
-  const label = "mb-1 lg:text-primary";
+    "text-black lg:text-white block w-full appearance-none bg-inherit border-b border-gray-700 lg:border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm";
+  const label = "lg:text-white mb-1";
 
   //   const handleRegister = async (e) => {
   //     e.preventDefault();
@@ -47,9 +47,9 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-secondary-light to-secondary-dark lg:bg-none">
-      <div className="absolute left-1/2 top-1/2 w-[95%] max-w-lg -translate-x-1/2 -translate-y-1/2 transform rounded border border-primary bg-white bg-opacity-50 p-8 shadow-md backdrop-blur-md backdrop-filter">
-        <h1 className="mb-8 text-center text-3xl font-bold lg:text-primary">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-secondary-light to-secondary-dark lg:bg-gradient-to-tr lg:from-complementary-light lg:to-complementary">
+      <div className="absolute mt-8 w-[95%] max-w-lg rounded border border-primary bg-white bg-opacity-50 p-8 shadow-md backdrop-blur-md backdrop-filter lg:mt-0 lg:border-none lg:bg-opacity-25">
+        <h1 className="mb-8 text-center text-3xl font-bold lg:text-white">
           Register
         </h1>
         {/* <form onSubmit={handleRegister}> */}
@@ -80,7 +80,7 @@ const RegisterForm = () => {
             </label>
             <br />
             <label htmlFor="uniqueID" className={label}>
-              NIC/Passport No.:
+              NIC/Passport No:
               <input
                 type="text"
                 id="uniqueID"
@@ -114,12 +114,12 @@ const RegisterForm = () => {
                   required
                   className={`${inputField} pr-10`}
                 />
-                <div
-                  className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3"
+                <button
+                  className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3 lg:text-white"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </div>
+                </button>
               </div>
             </label>
             <br />
@@ -134,25 +134,25 @@ const RegisterForm = () => {
                   required
                   className={`${inputField} pr-10`}
                 />
-                <div
-                  className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3"
+                <button
+                  className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3 lg:text-white"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-                </div>
+                </button>
               </div>
             </label>
             <br />
             <div className="mt-4 space-x-4 text-center">
               <button
                 onClick={handleBack}
-                className="btn-secondary cursor-pointer rounded px-4 py-2"
+                className="btn-secondary cursor-pointer rounded px-2 py-2 lg:px-6"
               >
                 Back to Home
               </button>
               <button
                 type="submit"
-                className="btn-primary cursor-pointer rounded px-6 py-2"
+                className="btn-primary cursor-pointer rounded px-4 py-2 lg:px-6"
               >
                 Create Account
               </button>
