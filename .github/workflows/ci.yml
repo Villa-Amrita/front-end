@@ -55,7 +55,7 @@ jobs:
       - name: Installing dependencies
         run: npm install
 
-      - name: Cypress run
+      - name: Run E2E tests (Cypress)
         uses: cypress-io/github-action@v6
         with:
           config-file: cypress.config.ts
