@@ -2,12 +2,12 @@
 
 import { useState, type MouseEvent, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { auth } from "config/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const RegisterForm = () => {
   const router = useRouter();
+  const auth = getAuth();
 
   const [firstName, setFirstName] = useState("");
   const [familyName, setFamilyName] = useState("");
