@@ -39,16 +39,20 @@ const NavBar = () => {
       collapseIcon?.classList.add("hidden");
       navbarItems?.classList.remove("opacity-100");
       navbarItems?.classList.add("opacity-0");
+      navbarItems?.classList.remove("translate-y-0");
+      navbarItems?.classList.add("translate-y-[-10%]");
       ribbon?.classList.add("h-20");
-      ribbon?.classList.remove("min-h-20");
+      ribbon?.classList.remove("h-[15rem]");
     } //Expand:
     else {
       expandIcon?.classList.add("hidden");
       collapseIcon?.classList.remove("hidden");
       navbarItems?.classList.remove("opacity-0");
       navbarItems?.classList.add("opacity-100");
+      navbarItems?.classList.remove("translate-y-[-10%]");
+      navbarItems?.classList.add("translate-y-0");
       ribbon?.classList.remove("h-20");
-      ribbon?.classList.add("min-h-20");
+      ribbon?.classList.add("h-[15rem]");
     }
   };
 
@@ -60,11 +64,8 @@ const NavBar = () => {
   }, [router]);
 
   return (
-    <nav>
-      <div
-        id="ribbon"
-        className="flex h-20 flex-col bg-primary pt-4 text-white transition-all md:flex-row md:items-center md:justify-between md:py-0"
-      >
+    <nav id="ribbon" className="h-20">
+      <div className="flex h-20 flex-col bg-primary pt-4 text-white transition-all md:flex-row md:items-center md:justify-between md:py-0">
         <Link
           href={"/"}
           className="ml-2 flex h-full w-fit flex-row items-center justify-between font-[poppins] text-xl md:ml-4"
@@ -96,7 +97,7 @@ const NavBar = () => {
 
         <ul
           id="navbar-items"
-          className="mt-3 flex h-full flex-col items-center bg-slate-100 font-[poppins] text-lg opacity-0 md:mr-6 md:mt-0 md:flex-row md:justify-between md:space-x-8 md:bg-primary md:pl-0 md:opacity-100"
+          className="mt-3 flex h-full translate-y-[-10%] flex-col items-center bg-slate-100 font-[poppins] text-lg opacity-0 transition-all md:mr-6 md:mt-0 md:flex-row md:justify-between md:space-x-8 md:bg-primary md:pl-0 md:pt-4 md:opacity-100"
         >
           <li className={itemOutlineStyles}>
             <Link href={"/dashboard"} className={itemStyles}>
