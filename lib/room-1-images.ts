@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import room1Image1 from "public/Images/Room 1/1.jpg";
 import room1Image2 from "public/Images/Room 1/2.jpg";
 import room1Image3 from "public/Images/Room 1/3.webp";

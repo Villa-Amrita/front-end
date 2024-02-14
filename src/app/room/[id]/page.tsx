@@ -18,10 +18,10 @@ export default function HomePage({
         </div>
         <section className="mx-4 my-8 lg:absolute lg:left-[50%] lg:top-48 lg:mx-0 lg:my-0">
           <div>
-            <span className="text-lg font-bold text-primary lg:text-xl">
+            <span className="font-[poppins] text-lg font-bold text-primary lg:text-xl">
               Description
             </span>
-            <ul className="ml-4 mt-2 text-lg font-bold">
+            <ul className="ml-4 mt-2 font-[poppins] text-lg font-bold">
               <li>
                 <span className="hidden lg:inline">-</span> King Sized Bed
               </li>
@@ -38,10 +38,10 @@ export default function HomePage({
           </div>
           <BlankLine />
           <div>
-            <span className="text-lg font-bold text-primary md:text-xl">
+            <span className="font-[poppins] text-lg font-bold text-primary md:text-xl">
               Conditions
             </span>
-            <ul className="ml-4 mt-2 text-lg font-bold">
+            <ul className="ml-4 mt-2 font-[poppins] text-lg font-bold">
               <li>
                 <span className="hidden lg:inline">-</span> No Children Allowed
               </li>
