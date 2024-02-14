@@ -106,6 +106,11 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+          <div className="flex h-full w-full items-end justify-end">
+            <a href="http://www.freepik.com" className="text-right">
+              Background Designed by Freepik
+            </a>
+          </div>
         </div>
       </div>
     </main>
