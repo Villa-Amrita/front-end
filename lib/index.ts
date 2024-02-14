@@ -10,11 +10,12 @@ export type Image = {
 
 export type Room = {
   roomNumber: number;
+  roomName: string;
   images: Image[];
 };
 
 export const rooms: Room[] = [
-  { roomNumber: 1, images: room1Images },
-  { roomNumber: 2, images: room2Images },
-  { roomNumber: 3, images: room3Images },
+  { roomNumber: 1, roomName: "Honeymoon Suite", images: room1Images },
+  { roomNumber: 2, roomName: "Family Room", images: room2Images },
+  { roomNumber: 3, roomName: "Luxury Suite", images: room3Images },
 ];

@@ -1,5 +1,4 @@
 import { rooms, type Room, type Image as ImageType } from "lib";
-import { isElementOfType } from "react-dom/test-utils";
 
 let room1: Room;
 let room2: Room;
@@ -20,7 +19,24 @@ if (searchForRoom3) {
   room3 = searchForRoom3;
 }
 
-const getRoomImages = (roomNumber: number): ImageType[] => {
+export const getRoomName = (roomNumber: number): string => {
+  switch (roomNumber) {
+    case 1: {
+      return room1.roomName;
+    }
+    case 2: {
+      return room2.roomName;
+    }
+    case 3: {
+      return room3.roomName;
+    }
+    default: {
+      throw new Error(`Room ${roomNumber} does not exist`);
+    }
+  }
+};
+
+export const getRoomImages = (roomNumber: number): ImageType[] => {
   switch (roomNumber) {
     case 1: {
       return room1.images;
