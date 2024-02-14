@@ -137,7 +137,7 @@ describe("Register Form Input validation and Account creation", () => {
     cy.get("#email").type("bar@gmail.com");
     cy.get("#confirmPassword").type("Short");
 
-    cy.get("form").submit();
+    cy.get('button[type="submit"]').click();
 
     cy.on("window:alert", (text) => {
       expect(text).to.equal("Password must be at least 8 characters long");
@@ -156,7 +156,7 @@ describe("Register Form Input validation and Account creation", () => {
       "VeryLongPassword12345678901234567890123456789",
     );
 
-    cy.get("form").submit();
+    cy.get('button[type="submit"]').click();
 
     cy.on("window:alert", (text) => {
       expect(text).to.equal("Password must be at most 32 characters long");
@@ -173,7 +173,7 @@ describe("Register Form Input validation and Account creation", () => {
     cy.get("#email").type("bar@gmail.com");
     cy.get("#confirmPassword").type("UPPERCASE123");
 
-    cy.get("form").submit();
+    cy.get('button[type="submit"]').click();
 
     cy.on("window:alert", (text) => {
       expect(text).to.equal(
@@ -192,7 +192,7 @@ describe("Register Form Input validation and Account creation", () => {
     cy.get("#email").type("bar@gmail.com");
     cy.get("#confirmPassword").type("lowercase123");
 
-    cy.get("form").submit();
+    cy.get('button[type="submit"]').click();
 
     cy.on("window:alert", (text) => {
       expect(text).to.equal(
@@ -211,7 +211,7 @@ describe("Register Form Input validation and Account creation", () => {
     cy.get("#email").type("bar@gmail.com");
     cy.get("#confirmPassword").type("NoNumberHere");
 
-    cy.get("form").submit();
+    cy.get('button[type="submit"]').click();
 
     cy.on("window:alert", (text) => {
       expect(text).to.equal("Password must contain at least one number");
@@ -229,7 +229,7 @@ describe("Register Form Input validation and Account creation", () => {
     cy.get("#nicOrPassport").type("123456789v");
     cy.get("#email").type("john.doe@example.com");
 
-    cy.get("form").submit();
+    cy.get('button[type="submit"]').click();
 
     cy.on("window:alert", (text) => {
       expect(text).to.equal("Passwords do not match");
@@ -247,7 +247,7 @@ describe("Register Form Input validation and Account creation", () => {
     cy.get("#nicOrPassport").type("123456789v");
     cy.get("#email").type("john.doe@example.com");
 
-    cy.get("form").submit();
+    cy.get('button[type="submit"]').click();
 
     cy.on("window:alert", (text) => {
       expect(text).to.equal("Passwords do not match");
