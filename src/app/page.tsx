@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Link from "next/link";
 import BlankLine from "~/components/BlankLine";
 import GetStartedButton from "./components/GetStartedButton";
 import LearnMoreButton from "./components/LearnMoreButton";
@@ -37,21 +37,20 @@ export default function HomePage() {
         <BlankLine />
         <BlankLine />
         <section className="flex-col items-center justify-center">
-          <h2 className="mb-1 flex justify-center text-3xl font-bold">
+          <h2 className="mb-1 flex justify-center font-[poppins] text-3xl font-bold">
             Welcome to
           </h2>
-          <h1 className="flex justify-center text-3xl font-bold text-primary">
+          <h1 className="flex justify-center font-[poppins] text-3xl font-bold text-primary">
             Villa Amrita!
           </h1>
         </section>
         <BlankLine />
         <BlankLine />
         <BlankLine />
-        <p className="flex justify-center px-14 text-center font-semibold">
+        <p className="flex justify-center px-14 text-center font-[poppins]">
           The perfect stay for your escape to
         </p>
-        <p className="px-20 font-semibold text-primary">Bentota, Sri Lanka.</p>
-        <BlankLine />
+        <p className="px-20 font-[poppins] text-primary">Bentota, Sri Lanka.</p>
         <BlankLine />
         <BlankLine />
         <BlankLine />
@@ -66,6 +65,16 @@ export default function HomePage() {
         <section className="z-10 w-3/5">
           <GetStartedButton data-cy="get-started-button" />
           <LearnMoreButton />
+          <p className="mt-4 text-center font-[poppins]">
+            Already have an account?
+            <br />
+            <Link
+              href="/sign-in"
+              className="text-primary transition-colors hover:text-primary-dark hover:underline"
+            >
+              Sign in!
+            </Link>
+          </p>
         </section>
       </div>
 
@@ -91,18 +100,28 @@ export default function HomePage() {
             {/*Right Column*/}
             <div className="flex-1">
               <div className="px-8 py-[7.5rem]">
-                <h2 className="mb-4 text-6xl font-bold text-white">
+                <h2 className="mb-4 font-[poppins] text-6xl font-bold text-white">
                   Welcome to
                 </h2>
-                <h1 className="mb-14 text-6xl font-extrabold text-primary">
+                <h1 className="mb-10 font-[poppins] text-6xl font-extrabold text-primary">
                   Villa Amrita!
                 </h1>
-                <p className="mb-20 text-xl font-semibold text-white">
+                <p className="mb-14 font-[poppins] text-xl text-white">
                   The perfect stay for your escape to{" "}
-                  <span className="text-primary">Bentota, Sri Lanka</span>.
+                  <span className="text-primary">Bentota, Sri Lanka.</span>
                 </p>
                 <BlankLine />
                 <ButtonList data-cy="button-list" />
+                <p className="mt-6 font-[poppins] text-white">
+                  Already have an account?{" "}
+                  <Link
+                    href="/sign-in"
+                    className="text-primary transition-colors hover:text-primary-dark hover:underline"
+                  >
+                    Sign in!
+                  </Link>
+                </p>
+                .
               </div>
             </div>
           </div>

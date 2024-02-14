@@ -7,10 +7,10 @@ import { auth } from "config/firebase";
 
 const ButtonList = () => {
   const router = useRouter();
-  const user = auth.currentUser;
 
   const getStarted = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    const user = auth.currentUser;
     if (user) {
       router.push("/dashboard");
     } else {
