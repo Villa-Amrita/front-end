@@ -1,9 +1,18 @@
 "use client";
-import React, { type MouseEvent } from "react";
 
-const BookNowButton = () => {
+import React, { type MouseEvent } from "react";
+import { useRouter } from "next/navigation";
+
+interface BookNowButtonProps {
+  roomNumber: number;
+}
+
+const BookNowButton = ({ roomNumber }: BookNowButtonProps) => {
+  const router = useRouter();
+
   const bookRoom = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    router.push(`/room/${roomNumber}/booking`);
   };
 
   return (

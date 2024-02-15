@@ -1,5 +1,5 @@
-import RoomShowcase from "~/components/RoomShowcase";
 import NavBar from "~/components/NavBar";
+import RoomShowcase from "~/components/RoomShowcase";
 import BlankLine from "~/components/BlankLine";
 import BookNowButton from "./components/BookNowButton";
 
@@ -56,7 +56,7 @@ export default function HomePage({
             Per Day
           </span>
         </section>
-        <BookNowButton />
+        <BookNowButton roomNumber={roomNumber} />
         <BlankLine />
       </main>
     </>
