@@ -4,8 +4,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signOut } from "firebase/auth";
-import { auth } from "config/firebase";
+import { signout, authenticated } from "~/app/utils/Authentication";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 
@@ -18,13 +17,8 @@ const NavBar = () => {
     "py-3 md:py-0 border border-white flex justify-center items-center h-full w-full min-w-fit md:border-none bg-slate-100 md:bg-primary";
 
   const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      router.push("/");
-    } catch (error) {
-      console.log(error);
-      alert(error);
-    }
+    await signout();
+    router.push("/");
   };
 
   const handleNavbar = () => {
@@ -37,8 +31,8 @@ const NavBar = () => {
     if (expandIcon?.classList.contains("hidden")) {
       expandIcon?.classList.remove("hidden");
       collapseIcon?.classList.add("hidden");
-      navbarItems?.classList.remove("opacity-100");
-      navbarItems?.classList.add("opacity-0");
+      navbarItems?.classList.remove("z-10");
+      navbarItems?.classList.add("z-[-1]");
       navbarItems?.classList.remove("translate-y-0");
       navbarItems?.classList.add("translate-y-[-350%]");
       ribbon?.classList.add("h-20");
@@ -47,8 +41,8 @@ const NavBar = () => {
     else {
       expandIcon?.classList.add("hidden");
       collapseIcon?.classList.remove("hidden");
-      navbarItems?.classList.remove("opacity-0");
-      navbarItems?.classList.add("opacity-100");
+      navbarItems?.classList.remove("z-[-1]");
+      navbarItems?.classList.add("z-10");
       navbarItems?.classList.remove("translate-y-[-350%]");
       navbarItems?.classList.add("translate-y-0");
       ribbon?.classList.remove("h-20");
@@ -57,15 +51,14 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    const user = auth.currentUser;
-    if (!user) {
+    if (!authenticated) {
       router.push("/");
     }
   }, [router]);
 
   return (
-    <nav id="ribbon" className="h-20">
-      <div className="flex h-20 flex-col bg-primary pt-4 text-white transition-all md:flex-row md:items-center md:justify-between md:py-0">
+    <nav id="ribbon" className="h-20 md:min-w-fit">
+      <div className="z-10 flex h-20 flex-col bg-primary pt-4 text-white transition-all md:flex-row md:items-center md:justify-between md:py-0">
         <Link
           href={"/"}
           className="ml-2 flex h-full w-fit flex-row items-center justify-between font-[poppins] text-xl md:ml-4"
@@ -97,7 +90,7 @@ const NavBar = () => {
 
         <ul
           id="navbar-items"
-          className="mt-3 flex h-full translate-y-[-350%] flex-col items-center bg-slate-100 font-[poppins] text-lg opacity-0 transition-all ease-out md:mr-6 md:mt-0 md:translate-y-0 md:flex-row md:justify-between md:space-x-8 md:bg-primary md:pl-0 md:opacity-100"
+          className="z-[-1] mt-3 flex h-full translate-y-[-350%] flex-col items-center bg-slate-100 font-[poppins] text-lg transition-all ease-out md:z-10 md:mr-6 md:mt-0 md:translate-y-0 md:flex-row md:justify-between md:space-x-8 md:bg-primary md:pl-0"
         >
           <li className={itemOutlineStyles}>
             <Link href={"/dashboard"} className={itemStyles}>

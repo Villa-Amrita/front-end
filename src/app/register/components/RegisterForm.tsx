@@ -3,7 +3,7 @@
 import { useState, type MouseEvent, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { type User, validateUser } from "~/app/Schema/userSchema";
-import { createUser } from "~/app/utils/Authentication";
+import { createUser, authenticated } from "~/app/utils/Authentication";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const RegisterForm = () => {
@@ -18,12 +18,15 @@ const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const inputField =
     "text-black lg:text-white block w-full appearance-none bg-inherit border-b border-gray-700 lg:border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm";
   const label = "lg:text-white mb-1";
 
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     const user: User = {
       firstName,
@@ -35,11 +38,22 @@ const RegisterForm = () => {
     };
 
     if (!validateUser(user)) {
+      setIsSubmitting(false);
       return;
     }
 
-    await createUser(user);
-    router.push("/dashboard");
+    try {
+      await createUser(user).then(() => {
+        if (authenticated()) {
+          router.push("/dashboard");
+        }
+      });
+    } catch (error) {
+      console.error("Error submitting form: ", error);
+    } finally {
+      // Re-enable the button regardless of success or failure
+      setIsSubmitting(false);
+    }
   };
 
   const handleBack = (e: MouseEvent<HTMLButtonElement>) => {
@@ -146,8 +160,9 @@ const RegisterForm = () => {
             <button
               type="submit"
               className="btn-primary cursor-pointer rounded px-2 py-2 lg:px-6"
+              disabled={isSubmitting}
             >
-              Create Account
+              {isSubmitting ? "Creating..." : "Create Account"}
             </button>
             <button
               onClick={handleBack}
