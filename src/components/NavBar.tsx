@@ -17,8 +17,14 @@ const NavBar = () => {
     "py-3 md:py-0 border border-white flex justify-center items-center h-full w-full min-w-fit md:border-none bg-slate-100 md:bg-primary";
 
   const handleLogout = async () => {
-    await signout();
-    router.push("/");
+    try {
+      await signout();
+    } catch (error) {
+      console.error(error);
+      alert(error);
+    } finally {
+      router.push("/");
+    }
   };
 
   const handleNavbar = () => {

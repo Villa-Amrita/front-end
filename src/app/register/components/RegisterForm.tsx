@@ -49,7 +49,8 @@ const RegisterForm = () => {
         }
       });
     } catch (error) {
-      console.error("Error submitting form: ", error);
+      console.error(error);
+      alert(error);
     } finally {
       // Re-enable the button regardless of success or failure
       setIsSubmitting(false);
