@@ -97,7 +97,7 @@ const NavBar = () => {
 
         <ul
           id="navbar-items"
-          className="mt-3 flex h-full translate-y-[-350%] flex-col items-center bg-slate-100 font-[poppins] text-lg opacity-0 transition-all ease-out md:mr-6 md:mt-0 md:flex-row md:justify-between md:space-x-8 md:bg-primary md:pl-0 md:pt-4 md:opacity-100"
+          className="mt-3 flex h-full translate-y-[-350%] flex-col items-center bg-slate-100 font-[poppins] text-lg opacity-0 transition-all ease-out md:mr-6 md:mt-0 md:translate-y-0 md:flex-row md:justify-between md:space-x-8 md:bg-primary md:pl-0 md:opacity-100"
         >
           <li className={itemOutlineStyles}>
             <Link href={"/dashboard"} className={itemStyles}>
