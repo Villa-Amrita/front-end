@@ -30,7 +30,7 @@ const RoomImage = ({ roomNumber, imageNumber }: RoomImageProps) => {
         <h2 className="mb-4 text-center font-[poppins] text-lg transition-colors hover:text-primary-dark md:text-xl">
           Room {roomNumber}: {getRoomName(roomNumber)}
         </h2>
-        <div className="flex items-center justify-center">
+        <div className="flex items-start justify-center md:h-[375px] md:w-[375px]">
           <Image
             src={roomImage.src}
             alt={roomImage.alt}
