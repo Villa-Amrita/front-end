@@ -37,6 +37,7 @@ const RoomImage = ({ roomNumber, imageNumber }: RoomImageProps) => {
             width={375}
             height={375}
             loading="lazy"
+            className="rounded-md border border-slate-200 bg-gray-200 bg-opacity-10 opacity-95 shadow-lg"
           />
         </div>
       </div>
