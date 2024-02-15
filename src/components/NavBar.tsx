@@ -40,7 +40,7 @@ const NavBar = () => {
       navbarItems?.classList.remove("opacity-100");
       navbarItems?.classList.add("opacity-0");
       navbarItems?.classList.remove("translate-y-0");
-      navbarItems?.classList.add("translate-y-[-10%]");
+      navbarItems?.classList.add("translate-y-[-350%]");
       ribbon?.classList.add("h-20");
       ribbon?.classList.remove("h-[15rem]");
     } //Expand:
@@ -49,7 +49,7 @@ const NavBar = () => {
       collapseIcon?.classList.remove("hidden");
       navbarItems?.classList.remove("opacity-0");
       navbarItems?.classList.add("opacity-100");
-      navbarItems?.classList.remove("translate-y-[-10%]");
+      navbarItems?.classList.remove("translate-y-[-350%]");
       navbarItems?.classList.add("translate-y-0");
       ribbon?.classList.remove("h-20");
       ribbon?.classList.add("h-[15rem]");
@@ -97,7 +97,7 @@ const NavBar = () => {
 
         <ul
           id="navbar-items"
-          className="mt-3 flex h-full translate-y-[-10%] flex-col items-center bg-slate-100 font-[poppins] text-lg opacity-0 transition-all md:mr-6 md:mt-0 md:flex-row md:justify-between md:space-x-8 md:bg-primary md:pl-0 md:pt-4 md:opacity-100"
+          className="mt-3 flex h-full translate-y-[-350%] flex-col items-center bg-slate-100 font-[poppins] text-lg opacity-0 transition-all ease-out md:mr-6 md:mt-0 md:flex-row md:justify-between md:space-x-8 md:bg-primary md:pl-0 md:pt-4 md:opacity-100"
         >
           <li className={itemOutlineStyles}>
             <Link href={"/dashboard"} className={itemStyles}>
