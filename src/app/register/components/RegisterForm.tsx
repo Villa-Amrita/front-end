@@ -49,8 +49,13 @@ const RegisterForm = () => {
         }
       });
     } catch (error) {
-      console.error(error);
-      alert(error);
+      if (error instanceof Error) {
+        console.error(error.message);
+        alert(error.message);
+      } else {
+        console.error("An unknown error occurred");
+        alert("An unknown error occurred");
+      }
     } finally {
       // Re-enable the button regardless of success or failure
       setIsSubmitting(false);

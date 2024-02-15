@@ -20,8 +20,13 @@ const NavBar = () => {
     try {
       await signout();
     } catch (error) {
-      console.error(error);
-      alert(error);
+      if (error instanceof Error) {
+        console.error(error.message);
+        alert(error.message);
+      } else {
+        console.error("An unknown error occurred");
+        alert("An unknown error occurred");
+      }
     } finally {
       router.push("/");
     }
@@ -57,7 +62,7 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    if (!authenticated) {
+    if (!authenticated()) {
       router.push("/");
     }
   }, [router]);
