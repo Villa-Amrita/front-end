@@ -62,6 +62,8 @@ export default function HomePage() {
         <BlankLine />
         <BlankLine />
         <BlankLine />
+        <BlankLine />
+        <BlankLine />
         <section className="z-10 w-3/5">
           <GetStartedButton data-cy="get-started-button" />
           <LearnMoreButton />
@@ -76,6 +78,8 @@ export default function HomePage() {
             </Link>
           </p>
         </section>
+        <BlankLine />
+        <BlankLine />
       </div>
 
       <div className="relative hidden lg:block">
