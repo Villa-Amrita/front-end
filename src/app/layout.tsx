@@ -1,6 +1,7 @@
 import "~/styles/globals.css";
 
 import { Inter } from "next/font/google";
+import "typeface-poppins";
 
 const inter = Inter({
   subsets: ["latin"],
