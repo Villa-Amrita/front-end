@@ -10,7 +10,7 @@ describe("Register Form Input validation and Account creation", () => {
   //This test does not check for missing values on any of the fields as they will be automatically handled by browser prompts on submit (and it is difficult to test these using cypress). However, they can very easily checked manually if needed.
 
   beforeEach(() => {
-    cy.visit("http://localhost:3000/register"); // Adjust the URL accordingly
+    cy.visit("http://localhost:3000/register");
   });
 
   it("Doesn't allow first name larger than 50 characters", () => {
@@ -277,7 +277,7 @@ describe("Register Form Input validation and Account creation", () => {
     cy.get("#confirmPassword").type(randomConfirmPassword);
 
     cy.get("button[type='submit']").click();
-
+    cy.wait(2000);
     // Assert navigation to the dashboard or any success page
     cy.url().should("include", "/dashboard");
   });

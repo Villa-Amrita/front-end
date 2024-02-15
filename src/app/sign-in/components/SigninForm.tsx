@@ -38,9 +38,14 @@ const SigninForm = () => {
         }
       });
     } catch (error) {
-      console.error("Error submitting form: ", error);
+      if (error instanceof Error) {
+        console.error(error.message);
+        alert(error.message);
+      } else {
+        console.error("An unknown error occurred");
+        alert("An unknown error occurred");
+      }
     } finally {
-      await signin(user);
       // Re-enable the button regardless of success or failure
       setIsSubmitting(false);
     }
