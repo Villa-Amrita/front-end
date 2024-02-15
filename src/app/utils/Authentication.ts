@@ -16,11 +16,9 @@ export const createUser = async (user: User) => {
     await createUserWithEmailAndPassword(auth, user.email, user.password);
   } catch (error) {
     if (error instanceof Error) {
-      console.error("Error registering user: ", error.message);
-      alert("Error registering user: " + error.message);
+      throw new Error("Error registering user: " + error.message);
     } else {
-      console.error("Unknown error registering user: ", error);
-      alert("An unknown error occurred");
+      throw new Error("An unknown error occurred");
     }
   }
 };
@@ -30,11 +28,9 @@ export const signin = async (user: SigninUser) => {
     await signInWithEmailAndPassword(auth, user.email, user.password);
   } catch (error) {
     if (error instanceof Error) {
-      console.error("Error signing in: ", error.message);
-      alert("Error signing in: " + error.message);
+      throw new Error("Error signing in: " + error.message);
     } else {
-      console.error("Unknown error signing in: ", error);
-      alert("An unknown error occurred");
+      throw new Error("An unknown error occurred");
     }
   }
 };
@@ -44,11 +40,9 @@ export const signout = async () => {
     await signOut(auth);
   } catch (error) {
     if (error instanceof Error) {
-      console.error("Error signing out: ", error.message);
-      alert("Error signing in: " + error.message);
+      throw new Error("Error signing out: " + error.message);
     } else {
-      console.error("Unknown error signing out: ", error);
-      alert("An unknown error occurred");
+      throw new Error("An unknown error occurred");
     }
   }
 };

@@ -65,7 +65,7 @@ export default function HomePage() {
         <BlankLine />
         <BlankLine />
         <section className="z-10 w-3/5">
-          <GetStartedButton data-cy="get-started-button" />
+          <GetStartedButton />
           <LearnMoreButton />
           <p className="mt-4 text-center font-[poppins]">
             Already have an account?
