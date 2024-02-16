@@ -5,7 +5,6 @@ import Image from "next/image";
 import { type DiningTime } from "./DailyMealSelector";
 import { type DiningType } from "../page";
 import BlankLine from "~/components/BlankLine";
-import defaultImage from "public/Icon.png";
 
 interface MealContentProps {
   diningTime: DiningTime;
@@ -40,7 +39,7 @@ const MealContent = ({
                 onClick={() => setSelectedFood(recommendation)}
               >
                 <Image
-                  src={defaultImage}
+                  src="/Icon.png"
                   alt="Food"
                   height={200}
                   width={200}
@@ -68,7 +67,7 @@ const MealContent = ({
                 onClick={() => setSelectedFood(cuisine)}
               >
                 <Image
-                  src={defaultImage}
+                  src="/Icon.png"
                   alt="Food"
                   height={200}
                   width={200}
