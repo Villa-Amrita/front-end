@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { type ReactNode, useState } from "react";
 
 interface AccordionProps {
   title: string;
+  children: ReactNode;
 }
 
-const Accordion = ({ title }: AccordionProps) => {
+const Accordion = ({ title, children: Children }: AccordionProps) => {
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
   return (
@@ -22,16 +22,8 @@ const Accordion = ({ title }: AccordionProps) => {
       <div
         className={`grid overflow-hidden rounded-b-lg border border-primary bg-white px-2 font-bold text-primary transition-all duration-200 ease-in-out ${isAccordionOpen ? "grid-rows-[1fr] py-1 opacity-100" : "grid-rows-[0fr] opacity-0"}`}
       >
-        <div
-          className={`flex items-center justify-center overflow-hidden ${isAccordionOpen ? "py-2" : ""}`}
-        >
-          <Image
-            src="/Icon.png"
-            alt="Villa Amrita Logo"
-            width={170}
-            height={170}
-            loading="lazy"
-          />
+        <div className={`overflow-hidden ${isAccordionOpen ? "py-2" : ""}`}>
+          {Children}
         </div>
       </div>
     </div>

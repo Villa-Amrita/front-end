@@ -71,7 +71,7 @@ const NavBar = () => {
           id="navbar-items"
           className={`grid overflow-hidden transition-all duration-300 md:mr-6 ${isNavbarOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 md:grid-rows-[1fr] md:opacity-100"}`}
         >
-          <div className="mt-6 flex flex-col items-center overflow-hidden font-[poppins] text-lg md:mt-0 md:flex-row md:justify-between md:space-x-8">
+          <div className="mt-3 flex flex-col items-center overflow-hidden font-[poppins] text-lg md:mt-0 md:flex-row md:justify-between md:space-x-8">
             <li className={itemOutlineStyles}>
               <Link href={"/dashboard"} className={itemStyles}>
                 Book Now

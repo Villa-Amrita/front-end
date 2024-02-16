@@ -54,8 +54,8 @@ const RoomShowcase = ({ roomNumber }: RoomShowcaseProps) => {
           modules={[Navigation, Pagination, EffectCoverflow]}
           effect="coverflow"
         >
-          {roomImages.map((image: ImageType, index: number) => (
-            <SwiperSlide key={index} className=" min-h-[350px]">
+          {roomImages.map((image: ImageType) => (
+            <SwiperSlide key={image.src} className="min-h-[350px]">
               <div className="flex min-h-[350px] w-full items-center justify-center">
                 <Image
                   src={image.src}
