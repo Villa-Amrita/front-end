@@ -12,9 +12,9 @@ interface RoomCalendarProps {
 const RoomCalendar = ({ roomNumber }: RoomCalendarProps) => {
   return (
     <>
-      <div className="mx-4 my-3 lg:hidden">
+      <div className="my-3 lg:hidden">
         <FullCalendar
-          height={500}
+          height={425}
           aspectRatio={1.35}
           plugins={[dayGridPlugin, interactionPlugin]}
           initialView="dayGridMonth"
@@ -36,6 +36,7 @@ const RoomCalendar = ({ roomNumber }: RoomCalendarProps) => {
           initialView="dayGridMonth"
           selectable={true}
           selectOverlap={false}
+          longPressDelay={100}
           events={[
             {
               title: "Booked",

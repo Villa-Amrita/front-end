@@ -36,7 +36,7 @@ const RoomShowcase = ({ roomNumber }: RoomShowcaseProps) => {
 
   return (
     <div className="flex flex-col items-center justify-between">
-      <h1 className="font-[poppins] text-xl font-bold text-primary md:text-2xl lg:text-3xl">
+      <h1 className="font-[poppins] text-2xl font-bold text-primary md:text-3xl">
         Room {roomNumber}: {getRoomName(roomNumber)}
       </h1>
 
@@ -54,8 +54,8 @@ const RoomShowcase = ({ roomNumber }: RoomShowcaseProps) => {
           modules={[Navigation, Pagination, EffectCoverflow]}
           effect="coverflow"
         >
-          {roomImages.map((image: ImageType, index: number) => (
-            <SwiperSlide key={index} className=" min-h-[350px]">
+          {roomImages.map((image: ImageType) => (
+            <SwiperSlide key={image.src} className="min-h-[350px]">
               <div className="flex min-h-[350px] w-full items-center justify-center">
                 <Image
                   src={image.src}
