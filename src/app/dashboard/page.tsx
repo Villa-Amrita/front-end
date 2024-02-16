@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <>
       <NavBar />
-      <main className="min-h-full min-w-fit bg-secondary py-8 lg:pb-[2.975rem]">
+      <main className="min-h-full min-w-fit overflow-x-hidden bg-secondary py-8 lg:pb-[2.975rem]">
         <h1 className="flex items-center justify-center font-[poppins] text-3xl font-bold text-primary">
           Book Now
         </h1>

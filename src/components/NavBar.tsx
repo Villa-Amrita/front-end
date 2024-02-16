@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -10,6 +10,8 @@ import { ImCross } from "react-icons/im";
 
 const NavBar = () => {
   const router = useRouter();
+
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
   const itemStyles =
     "text-black md:text-white hover:text-slate-300 transition-colors";
@@ -32,35 +34,6 @@ const NavBar = () => {
     }
   };
 
-  const handleNavbar = () => {
-    const expandIcon = document.getElementById("expand-icon");
-    const collapseIcon = document.getElementById("collapse-icon");
-    const navbarItems = document.getElementById("navbar-items");
-    const ribbon = document.getElementById("ribbon");
-
-    //Collapse:
-    if (expandIcon?.classList.contains("hidden")) {
-      expandIcon?.classList.remove("hidden");
-      collapseIcon?.classList.add("hidden");
-      navbarItems?.classList.remove("z-10");
-      navbarItems?.classList.add("z-[-1]");
-      navbarItems?.classList.remove("translate-y-0");
-      navbarItems?.classList.add("translate-y-[-350%]");
-      ribbon?.classList.add("h-20");
-      ribbon?.classList.remove("h-[15rem]");
-    } //Expand:
-    else {
-      expandIcon?.classList.add("hidden");
-      collapseIcon?.classList.remove("hidden");
-      navbarItems?.classList.remove("z-[-1]");
-      navbarItems?.classList.add("z-10");
-      navbarItems?.classList.remove("translate-y-[-350%]");
-      navbarItems?.classList.add("translate-y-0");
-      ribbon?.classList.remove("h-20");
-      ribbon?.classList.add("h-[15rem]");
-    }
-  };
-
   useEffect(() => {
     if (!authenticated()) {
       router.push("/");
@@ -68,60 +41,57 @@ const NavBar = () => {
   }, [router]);
 
   return (
-    <nav id="ribbon" className="h-20 md:min-w-fit">
-      <div className="z-10 flex h-20 flex-col bg-primary pt-4 text-white transition-all md:flex-row md:items-center md:justify-between md:py-0">
-        <Link
-          href={"/"}
-          className="ml-2 flex h-full w-fit flex-row items-center justify-between font-[poppins] text-xl md:ml-4"
-        >
-          <Image
-            src="/Icon.png"
-            alt="Logo"
-            height={60}
-            width={60}
-            className="mx-2 rounded-full bg-white py-2"
-          />
-          Villa Amrita
-        </Link>
+    <nav id="ribbon" className="md:min-w-fit">
+      <div className="flex min-h-20 flex-col bg-primary pt-4 text-white transition-all duration-300 md:flex-row md:items-center md:justify-between md:py-0">
+        <div>
+          <Link
+            href={"/"}
+            className="ml-2 flex h-full w-fit flex-row items-center justify-between font-[poppins] text-xl md:ml-4"
+          >
+            <Image
+              src="/Icon.png"
+              alt="Logo"
+              height={60}
+              width={60}
+              className="mx-2 rounded-full bg-white py-2"
+            />
+            Villa Amrita
+          </Link>
 
-        <button
-          id="expand-icon"
-          className="absolute right-4 top-[1.70rem] text-3xl md:hidden"
-          onClick={handleNavbar}
-        >
-          <FaBars />
-        </button>
-        <button
-          id="collapse-icon"
-          className="absolute right-4 top-[1.70rem] hidden text-3xl md:hidden"
-          onClick={handleNavbar}
-        >
-          <ImCross />
-        </button>
+          <button
+            id="expand-icon"
+            className="absolute right-4 top-[1.70rem] text-3xl lg:hidden"
+            onClick={() => setIsNavbarOpen(!isNavbarOpen)}
+          >
+            {isNavbarOpen ? <ImCross /> : <FaBars />}
+          </button>
+        </div>
 
         <ul
           id="navbar-items"
-          className="z-[-1] mt-3 flex h-full translate-y-[-350%] flex-col items-center bg-slate-100 font-[poppins] text-lg transition-all ease-out md:z-10 md:mr-6 md:mt-0 md:translate-y-0 md:flex-row md:justify-between md:space-x-8 md:bg-primary md:pl-0"
+          className={`grid overflow-hidden transition-all duration-300 md:mr-6 ${isNavbarOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 md:grid-rows-[1fr] md:opacity-100"}`}
         >
-          <li className={itemOutlineStyles}>
-            <Link href={"/dashboard"} className={itemStyles}>
-              Book Now
-            </Link>
-          </li>
-          <li className={itemOutlineStyles}>
-            <Link href={"/my-bookings"} className={itemStyles}>
-              My Bookings
-            </Link>
-          </li>
-          <li className={itemOutlineStyles}>
-            <button
-              id="logout-button"
-              className="rounded-full text-rose-600 transition-colors md:bg-rose-600 md:px-4 md:py-1 md:text-white md:hover:bg-rose-700"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
-          </li>
+          <div className="mt-6 flex flex-col items-center overflow-hidden font-[poppins] text-lg md:mt-0 md:flex-row md:justify-between md:space-x-8">
+            <li className={itemOutlineStyles}>
+              <Link href={"/dashboard"} className={itemStyles}>
+                Book Now
+              </Link>
+            </li>
+            <li className={itemOutlineStyles}>
+              <Link href={"/my-bookings"} className={itemStyles}>
+                My Bookings
+              </Link>
+            </li>
+            <li className={itemOutlineStyles}>
+              <button
+                id="logout-button"
+                className="rounded-full text-rose-600 transition-colors md:bg-rose-600 md:px-4 md:py-1 md:text-white md:hover:bg-rose-700"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </li>
+          </div>
         </ul>
       </div>
     </nav>

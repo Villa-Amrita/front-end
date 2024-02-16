@@ -36,7 +36,7 @@ const RoomShowcase = ({ roomNumber }: RoomShowcaseProps) => {
 
   return (
     <div className="flex flex-col items-center justify-between">
-      <h1 className="font-[poppins] text-xl font-bold text-primary md:text-2xl lg:text-3xl">
+      <h1 className="font-[poppins] text-2xl font-bold text-primary md:text-3xl">
         Room {roomNumber}: {getRoomName(roomNumber)}
       </h1>
 
