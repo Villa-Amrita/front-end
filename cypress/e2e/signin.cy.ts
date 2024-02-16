@@ -37,7 +37,7 @@ describe("Sign-in Form Sign-in functionality", () => {
     });
   });
 
-  it("Doesn't allow invalid email and valid to signin", () => {
+  it("Doesn't allow invalid email and valid password to signin", () => {
     //Enter data
     cy.get("#email").type(falseEmail);
     cy.get("#password").type(correctPassword);
@@ -55,7 +55,7 @@ describe("Sign-in Form Sign-in functionality", () => {
     });
   });
 
-  it("Doesn't allow valid email and invalid to signin", () => {
+  it("Doesn't allow valid email and invalid password to signin", () => {
     //Enter data
     cy.get("#email").type(correctEmail);
     cy.get("#password").type(falseEmail);
@@ -73,7 +73,7 @@ describe("Sign-in Form Sign-in functionality", () => {
     });
   });
 
-  it("Allows valid email and password to signin", () => {
+  it("Allows valid email and valid password to signin", () => {
     //Enter data
     cy.get("#email").type(correctEmail);
     cy.get("#password").type(correctPassword);

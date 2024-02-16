@@ -42,7 +42,7 @@ const NavBar = () => {
 
   return (
     <nav id="ribbon" className="md:min-w-fit">
-      <div className="flex min-h-20 flex-col bg-primary pt-4 text-white transition-all duration-300 md:flex-row md:items-center md:justify-between md:py-0">
+      <div className="flex min-h-20 flex-col bg-primary pt-4 text-white transition-all duration-300 ease-in-out md:flex-row md:items-center md:justify-between md:py-0">
         <div>
           <Link
             href={"/"}
@@ -69,7 +69,7 @@ const NavBar = () => {
 
         <ul
           id="navbar-items"
-          className={`grid overflow-hidden transition-all duration-300 md:mr-6 ${isNavbarOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 md:grid-rows-[1fr] md:opacity-100"}`}
+          className={`grid overflow-hidden transition-all duration-300 ease-in-out md:mr-6 ${isNavbarOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 md:grid-rows-[1fr] md:opacity-100"}`}
         >
           <div className="mt-3 flex flex-col items-center overflow-hidden font-[poppins] text-lg md:mt-0 md:flex-row md:justify-between md:space-x-8">
             <li className={itemOutlineStyles}>
