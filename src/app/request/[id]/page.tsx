@@ -11,6 +11,8 @@ import ProceedButton from "./components/ProceedButton";
 export default function HomePage({
   params,
 }: Readonly<{ params: { id: number } }>) {
+  const id: number = params.id;
+  const requestNumber = parseInt(id.toString());
   const router = useRouter();
 
   const dates: Date[] = [
@@ -18,8 +20,6 @@ export default function HomePage({
     new Date("2024-02-16"),
     new Date("2024-02-17"),
   ];
-  const id: number = params.id;
-  const requestNumber = parseInt(id.toString());
 
   const [diningType, setDiningType] = useState<DiningType>(DiningType.None);
 
