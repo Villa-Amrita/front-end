@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 export default function HomePage() {
   return (
     <main>
-      <div className="flex min-h-screen flex-col items-center lg:hidden">
+      <div className="flex min-h-screen flex-col items-center overflow-x-hidden lg:hidden">
         <BlankLine />
         <BlankLine />
         <BlankLine />

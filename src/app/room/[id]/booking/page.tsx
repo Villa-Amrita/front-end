@@ -13,14 +13,14 @@ export default function HomePage({
   return (
     <>
       <NavBar />
-      <main className="py-8">
-        <h1 className="flex items-center justify-center font-[poppins] text-3xl font-bold text-primary">
+      <main className="overflow-x-hidden py-8">
+        <h1 className="flex items-center justify-center font-[poppins] text-2xl font-bold text-primary md:text-3xl">
           Booking Request
         </h1>
-        <BlankLine />
-        <div className="mx-6 flex items-center justify-center lg:mt-2">
+        <div className="mx-6 mt-2 flex items-center justify-center lg:mt-4">
           <RoomView roomNumber={roomNumber} />
         </div>
+        <BlankLine />
         <BlankLine />
         <BlankLine />
         <BlankLine />
@@ -30,8 +30,11 @@ export default function HomePage({
         <section>
           <span className="flex items-center justify-center font-[poppins] text-xl font-bold text-primary">
             Select days of stay
+            <span className="block lg:hidden">&nbsp;(Press and hold)</span>
           </span>
+          <BlankLine />
           <RoomCalendar roomNumber={roomNumber} />
+          <BlankLine />
           <BlankLine />
           <BlankLine />
           <span className="flex items-center justify-center font-[poppins] text-xl font-bold text-primary">
@@ -42,6 +45,7 @@ export default function HomePage({
             <textarea className="mx-4 flex w-[92%] rounded-lg border border-primary p-4 md:w-[95%] lg:mx-60 lg:w-[68.5%]"></textarea>
           </div>
         </section>
+        <BlankLine />
         <BlankLine />
         <BlankLine />
         <div className="hidden lg:block">

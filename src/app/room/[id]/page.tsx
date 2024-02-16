@@ -13,7 +13,7 @@ export default function HomePage({
     <>
       <NavBar />
       <main className="mt-6 lg:mt-8">
-        <div className="mx-0 md:mx-10">
+        <div className="mx-0 overflow-x-hidden md:mx-10">
           <RoomShowcase roomNumber={roomNumber} />
         </div>
         <section className="mx-4 my-8 lg:absolute lg:left-[47%] lg:top-64 lg:mx-0 lg:my-0">
@@ -56,7 +56,9 @@ export default function HomePage({
             Per Day
           </span>
         </section>
-        <BookNowButton roomNumber={roomNumber} />
+        <section>
+          <BookNowButton roomNumber={roomNumber} />
+        </section>
         <BlankLine />
       </main>
     </>
