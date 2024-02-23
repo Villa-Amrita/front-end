@@ -83,6 +83,11 @@ const NavBar = () => {
               </Link>
             </li>
             <li className={itemOutlineStyles}>
+              <Link href={"/attractions"} className={itemStyles}>
+                Attractions
+              </Link>
+            </li>
+            <li className={itemOutlineStyles}>
               <button
                 id="logout-button"
                 className="rounded-full text-rose-600 transition-colors md:bg-rose-600 md:px-4 md:py-1 md:text-white md:hover:bg-rose-700"
