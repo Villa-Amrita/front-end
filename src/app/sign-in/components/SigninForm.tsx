@@ -22,7 +22,7 @@ const SigninForm = () => {
     "text-black lg:text-white block w-full appearance-none bg-inherit border-b border-gray-700 lg:border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm";
   const label = "lg:text-white mb-1";
 
-  const handleRegister = async (e: FormEvent) => {
+  const handleSignIn = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -56,7 +56,7 @@ const SigninForm = () => {
       <h1 className="mb-8 text-center text-3xl font-bold lg:text-white">
         Sign in
       </h1>
-      <form className="space-y-4" onSubmit={handleRegister}>
+      <form className="space-y-4" onSubmit={handleSignIn}>
         <div className="flex flex-col">
           <label htmlFor="email" className={label}>
             Email:
