@@ -5,6 +5,7 @@ import {
 } from "firebase/auth";
 import { auth } from "config/firebase";
 import { type User } from "~/app/Schema/userSchema";
+import { createUser as createUserInDatabase } from "lib/client";
 
 export type SigninUser = {
   email: string;
@@ -13,7 +14,19 @@ export type SigninUser = {
 
 export const createUser = async (user: User) => {
   try {
-    await createUserWithEmailAndPassword(auth, user.email, user.password);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      user.email,
+      user.password,
+    );
+    const uid = userCredential.user.uid;
+    await createUserInDatabase({
+      id: uid,
+      firstName: user.firstName,
+      familyName: user.familyName,
+      nic: user.nicOrPassport,
+      email: user.email,
+    });
   } catch (error) {
     if (error instanceof Error) {
       throw new Error("Error registering user: " + error.message);
