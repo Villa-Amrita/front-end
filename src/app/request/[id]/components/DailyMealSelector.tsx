@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useState } from "react";
@@ -8,23 +10,28 @@ import MealContent from "./MealContent";
 interface DailyMealSelectorProps {
   date: Date;
   diningType: DiningType;
+  meals: any[];
 }
 
-const DailyMealSelector = ({ date, diningType }: DailyMealSelectorProps) => {
-  const [breakfastFood, setBreakfastFood] = useState(0);
-  const [lunchFood, setLunchFood] = useState(0);
-  const [dinnerFood, setDinnerFood] = useState(0);
+const DailyMealSelector = ({
+  date,
+  diningType,
+  meals,
+}: DailyMealSelectorProps) => {
+  const [breakfastMeal, setBreakfastMeal] = useState(0);
+  const [lunchMeal, setLunchMeal] = useState(0);
+  const [dinnerMeal, setDinnerMeal] = useState(0);
 
-  const updateBreakfastFood = (cuisine: number) => {
-    setBreakfastFood(cuisine);
+  const updateBreakfastMeal = (meal: number) => {
+    setBreakfastMeal(meal);
   };
 
-  const updateLunchFood = (cuisine: number) => {
-    setLunchFood(cuisine);
+  const updateLunchMeal = (meal: number) => {
+    setLunchMeal(meal);
   };
 
-  const updateDinnerFood = (cuisine: number) => {
-    setDinnerFood(cuisine);
+  const updateDinnerMeal = (meal: number) => {
+    setDinnerMeal(meal);
   };
 
   const formatDate = (date: Date): string => {
@@ -47,39 +54,51 @@ const DailyMealSelector = ({ date, diningType }: DailyMealSelectorProps) => {
           <MealContent
             diningTime={DiningTime.Breakfast}
             diningType={diningType}
-            handleSelection={updateBreakfastFood}
+            handleSelection={updateBreakfastMeal}
+            meals={meals}
           />
         </Accordion>
         <Accordion title="Lunch">
           <MealContent
             diningTime={DiningTime.Lunch}
             diningType={diningType}
-            handleSelection={updateLunchFood}
+            handleSelection={updateLunchMeal}
+            meals={meals}
           />
         </Accordion>
         <Accordion title="Dinner">
           <MealContent
             diningTime={DiningTime.Dinner}
             diningType={diningType}
-            handleSelection={updateDinnerFood}
+            handleSelection={updateDinnerMeal}
+            meals={meals}
           />
         </Accordion>
       </div>
       <div className="flex w-full flex-col items-center justify-center rounded-lg border border-black py-2 font-[poppins] text-sm font-bold lg:w-3/4 lg:flex-row lg:space-x-4 lg:text-lg">
         <span
-          className={`text-center ${breakfastFood === 0 ? "text-red-500" : "text-primary"}`}
+          className={`text-center ${breakfastMeal === 0 ? "text-red-500" : "text-primary"}`}
         >
-          Breakfast:&nbsp;{breakfastFood === 0 ? "No Selection" : breakfastFood}
+          Breakfast:&nbsp;
+          {breakfastMeal === 0
+            ? "No Selection"
+            : meals.find((meal) => meal.id === breakfastMeal)?.name}
         </span>
         <span
-          className={`text-center ${lunchFood === 0 ? "text-red-500" : "text-primary"}`}
+          className={`text-center ${lunchMeal === 0 ? "text-red-500" : "text-primary"}`}
         >
-          Lunch:&nbsp;{lunchFood === 0 ? "No Selection" : lunchFood}
+          Lunch:&nbsp;
+          {lunchMeal === 0
+            ? "No Selection"
+            : meals.find((meal) => meal.id === lunchMeal)?.name}
         </span>
         <span
-          className={`text-center ${dinnerFood === 0 ? "text-red-500" : "text-primary"}`}
+          className={`text-center ${dinnerMeal === 0 ? "text-red-500" : "text-primary"}`}
         >
-          Dinner:&nbsp;{dinnerFood === 0 ? "No Selection" : dinnerFood}
+          Dinner:&nbsp;
+          {dinnerMeal === 0
+            ? "No Selection"
+            : meals.find((meal) => meal.id === dinnerMeal)?.name}
         </span>
       </div>
     </section>

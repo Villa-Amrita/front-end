@@ -21,21 +21,33 @@ const PlaceBookingRequestButton = ({
   const handleBookingRequest = async () => {
     try {
       const cookies = new Cookies();
+      if (cookies.get("specialRequests") == null) {
+        cookies.set("specialRequests", "None");
+      }
       const specialRequests = cookies.get("specialRequests");
       const startDate = cookies.get("startDate");
-      const endDate = cookies.get("endDate");
+      let endDate = cookies.get("endDate") as Date;
+      endDate = new Date(endDate);
+      endDate.setDate(endDate.getDate() - 1);
+      const formattedEndDate = endDate.toISOString().split("T")[0];
       const roomId = roomNumber;
       const customerId = getUserId();
       const status = "PENDING";
+
+      if (!formattedEndDate) {
+        throw new Error("No end date found");
+      }
+
       const reservation = await createReservation({
         roomId: roomId,
         customerId: customerId,
         startDate: startDate,
-        endDate: endDate,
+        endDate: formattedEndDate,
         specialRequests: specialRequests,
         status: status,
       });
       const reservationId = reservation.id;
+      cookies.remove("specialRequests");
 
       console.log("Booking request sent" + roomNumber);
       router.push(`/request/${reservationId}`);

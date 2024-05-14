@@ -130,6 +130,8 @@ export async function updateReservation(
   customerId: string;
   startDate: string;
   endDate: string;
+  specialRequests: string;
+  status: string;
 }> {
   return await client.reservation.updateReservation.mutate(data);
 }
@@ -140,6 +142,8 @@ export async function viewReservation(reservationId: number): Promise<{
   customerId: string;
   startDate: string;
   endDate: string;
+  specialRequests: string;
+  status: string;
 }> {
   return await client.reservation.viewReservation.query(reservationId);
 }
@@ -151,6 +155,8 @@ export async function viewAllReservations(): Promise<
     customerId: string;
     startDate: string;
     endDate: string;
+    specialRequests: string;
+    status: string;
   }[]
 > {
   return await client.reservation.viewAllReservations.query();
