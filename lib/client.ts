@@ -11,6 +11,7 @@ import {
   type CreateMealPlanInputType,
   type ReservationType,
   type CreateReservationInputType,
+  type UpdateReservationInputType,
   type ReservationDailyMealType,
   type CreateReservationDailyMealInputType,
   type ReservationDailyMealSetType,
@@ -104,13 +105,26 @@ export async function createReservation(
   id: number;
   roomId: number;
   customerId: string;
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
+  specialRequests: string;
+  status: string;
 }> {
-  return await client.reservation.createReservation.mutate(data);
+  const result = await client.reservation.createReservation.mutate(data);
+
+  // Explicitly convert startDate and endDate from strings to Date objects
+  const formattedResult = {
+    ...result,
+    startDate: new Date(result.startDate),
+    endDate: new Date(result.endDate),
+  };
+
+  return formattedResult;
 }
 
-export async function updateReservation(data: ReservationType): Promise<{
+export async function updateReservation(
+  data: UpdateReservationInputType,
+): Promise<{
   id: number;
   roomId: number;
   customerId: string;

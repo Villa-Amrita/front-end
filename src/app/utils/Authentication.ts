@@ -63,3 +63,11 @@ export const signout = async () => {
 export const authenticated = (): boolean => {
   return !!auth.currentUser;
 };
+
+export const getUserId = (): string => {
+  if (auth.currentUser) {
+    return auth.currentUser.uid;
+  } else {
+    throw new Error("User not authenticated");
+  }
+};
