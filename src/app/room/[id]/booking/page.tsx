@@ -3,6 +3,7 @@ import RoomView from "./components/RoomView";
 import BlankLine from "~/components/BlankLine";
 import RoomCalendar from "./components/RoomCalendar";
 import PlaceBookingRequestButton from "./components/PlaceBookingRequestButton";
+import SpecialRequests from "./components/SpecialRequests";
 
 export default function HomePage({
   params,
@@ -41,9 +42,7 @@ export default function HomePage({
             Special Requests
           </span>
           <BlankLine />
-          <div className="flex items-center justify-center">
-            <textarea className="mx-4 flex w-[92%] rounded-lg border border-primary p-4 md:w-[95%] lg:mx-60 lg:w-[68.5%]"></textarea>
-          </div>
+          <SpecialRequests />
         </section>
         <BlankLine />
         <BlankLine />

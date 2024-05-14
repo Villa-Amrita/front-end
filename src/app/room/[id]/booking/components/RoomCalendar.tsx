@@ -4,12 +4,21 @@ import React from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import { type DateSelectArg } from "@fullcalendar/core/index.js";
+import Cookies from "universal-cookie";
 
 interface RoomCalendarProps {
   roomNumber: number;
 }
 
 const RoomCalendar = ({ roomNumber }: RoomCalendarProps) => {
+  const cookies = new Cookies(null, { path: "/" });
+
+  const handleDateClick = (arg: DateSelectArg) => {
+    cookies.set("startDate", arg.startStr);
+    cookies.set("endDate", arg.endStr);
+  };
+
   return (
     <>
       <div className="my-3 lg:hidden">
@@ -26,6 +35,7 @@ const RoomCalendar = ({ roomNumber }: RoomCalendarProps) => {
               date: "2024-02-01",
             },
           ]}
+          select={handleDateClick}
         />
       </div>
       <div className="mx-60 my-4 hidden lg:block">
@@ -43,6 +53,7 @@ const RoomCalendar = ({ roomNumber }: RoomCalendarProps) => {
               date: "2024-02-01",
             },
           ]}
+          select={handleDateClick}
         />
       </div>
     </>
