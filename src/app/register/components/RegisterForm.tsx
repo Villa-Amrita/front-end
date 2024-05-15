@@ -3,7 +3,12 @@
 import { useState, type MouseEvent, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { type User, validateUser } from "~/app/Schema/userSchema";
-import { createUser, authenticated } from "~/app/utils/Authentication";
+import {
+  createUser,
+  authenticated,
+  getUserId,
+} from "~/app/utils/Authentication";
+import Cookies from "universal-cookie";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const RegisterForm = () => {
@@ -45,6 +50,10 @@ const RegisterForm = () => {
     try {
       await createUser(user).then(() => {
         if (authenticated()) {
+          const cookies = new Cookies();
+          cookies.set("authEmail", user.email, { path: "/" });
+          cookies.set("authPassword", user.password, { path: "/" });
+          cookies.set("authId", getUserId(), { path: "/" });
           router.push("/dashboard");
         }
       });

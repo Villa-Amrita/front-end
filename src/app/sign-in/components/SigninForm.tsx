@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import {
   signin,
   authenticated,
+  getUserId,
   type SigninUser,
 } from "~/app/utils/Authentication";
 import Cookies from "universal-cookie";
@@ -12,11 +13,11 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SigninForm = () => {
   const router = useRouter();
+  const cookies = new Cookies({ path: "/" });
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const inputField =
@@ -35,9 +36,9 @@ const SigninForm = () => {
     try {
       await signin(user).then(() => {
         if (authenticated()) {
-          const cookies = new Cookies();
-          cookies.set("authEmail", user.email, { path: "/" });
-          cookies.set("authPassword", user.password, { path: "/" });
+          cookies.set("authEmail", user.email);
+          cookies.set("authPassword", user.password);
+          cookies.set("authId", getUserId());
           router.push("/dashboard");
         }
       });

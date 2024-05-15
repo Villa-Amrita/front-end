@@ -21,16 +21,16 @@ const BookingCard = ({ requestNumber, requestStatus }: BookingCardProps) => {
         </div>
         <div className="text-2xl">
           {requestStatus === RequestStatus.Processing && (
-            <span className="text-gray-600">{requestStatus.toString()}</span>
+            <span className="text-gray-600">Processing</span>
           )}
           {requestStatus === RequestStatus.Rejected && (
-            <span className="text-red-600">{requestStatus.toString()}</span>
+            <span className="text-red-600">Rejected</span>
           )}
           {requestStatus === RequestStatus.Confirmed && (
-            <span className="text-yellow-400">{requestStatus.toString()}</span>
+            <span className="text-yellow-400">Confirmed</span>
           )}
           {requestStatus === RequestStatus.Payed && (
-            <span className="text-green-600">{requestStatus.toString()}</span>
+            <span className="text-green-600">Payed</span>
           )}
         </div>
       </div>
