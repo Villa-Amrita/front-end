@@ -7,6 +7,7 @@ import {
   authenticated,
   type SigninUser,
 } from "~/app/utils/Authentication";
+import Cookies from "universal-cookie";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SigninForm = () => {
@@ -34,6 +35,9 @@ const SigninForm = () => {
     try {
       await signin(user).then(() => {
         if (authenticated()) {
+          const cookies = new Cookies();
+          cookies.set("authEmail", user.email, { path: "/" });
+          cookies.set("authPassword", user.password, { path: "/" });
           router.push("/dashboard");
         }
       });

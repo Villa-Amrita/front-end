@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
@@ -11,12 +12,19 @@ interface DailyMealSelectorProps {
   date: Date;
   diningType: DiningType;
   meals: any[];
+  updateDailyMealSelection: (
+    date: Date,
+    breakfastMealId: number,
+    lunchMealId: number,
+    dinnerMealId: number,
+  ) => void;
 }
 
 const DailyMealSelector = ({
   date,
   diningType,
   meals,
+  updateDailyMealSelection,
 }: DailyMealSelectorProps) => {
   const [breakfastMeal, setBreakfastMeal] = useState(0);
   const [lunchMeal, setLunchMeal] = useState(0);
@@ -24,14 +32,17 @@ const DailyMealSelector = ({
 
   const updateBreakfastMeal = (meal: number) => {
     setBreakfastMeal(meal);
+    updateDailyMealSelection(date, breakfastMeal, lunchMeal, dinnerMeal);
   };
 
   const updateLunchMeal = (meal: number) => {
     setLunchMeal(meal);
+    updateDailyMealSelection(date, breakfastMeal, lunchMeal, dinnerMeal);
   };
 
   const updateDinnerMeal = (meal: number) => {
     setDinnerMeal(meal);
+    updateDailyMealSelection(date, breakfastMeal, lunchMeal, dinnerMeal);
   };
 
   const formatDate = (date: Date): string => {

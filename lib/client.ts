@@ -16,6 +16,7 @@ import {
   type CreateReservationDailyMealInputType,
   type ReservationDailyMealSetType,
   type CreateReservationDailyMealSetInputType,
+  type UpdateReservationDailyMealSetInputType,
 } from "../../back-end/server/api/trpcRouter";
 
 const client = createTRPCProxyClient<TRPCRouter>({
@@ -203,7 +204,7 @@ export async function createReservationDailyMealSet(
 }
 
 export async function updateReservationDailyMealSet(
-  data: ReservationDailyMealSetType,
+  data: UpdateReservationDailyMealSetInputType,
 ): Promise<{ id: number; reservationId: number; date: string }> {
   return await client.reservationDailyMealSet.updateReservationDailyMealSet.mutate(
     data,
