@@ -1,13 +1,31 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+//const cookies = new Cookies();
+//const customerId = cookies.get("authId") as string;
 import { viewAllReservations } from "lib/client";
 import Cookies from "universal-cookie";
 import NavBar from "~/components/NavBar";
 import BookingCard from "./components/BookingCard";
 import BlankLine from "~/components/BlankLine";
+import { type ReservationType as Reservation } from "../../../../back-end/server/api/trpcRouter";
 
 export default async function HomePage() {
-  const cookies = new Cookies();
-  const customerId = cookies.get("authId") as string;
+  const customerId = "dLbW6DbPscTM70apUKBMLXZS7ph1";
+
+  const viewAllReservations = async (): Promise<Reservation[]> => {
+    const response = await fetch(`http://localhost:8080/api/reservation/viewAllCustomerReservations/${customerId}`, {
+      cache: "no-cache",
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`Error fetching rooms: ${response.statusText}`);
+    }
+    const data = await response.json();
+    const reservations: Reservation[] = data.data;
+    return reservations;
+  };
 
   const fetchData = async (customerId: string) => {
     try {

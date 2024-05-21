@@ -35,18 +35,18 @@ const BookingCard = ({ requestNumber, requestStatus }: BookingCardProps) => {
         </div>
       </div>
       <div className="p-2">
-        {requestStatus === RequestStatus.Processing && (
+        {/* {requestStatus === RequestStatus.Processing && (
           <button className={buttonStyles}>Inquire</button>
         )}
         {requestStatus === RequestStatus.Rejected && (
           <button className={buttonStyles}>View</button>
-        )}
+        )} */}
         {requestStatus === RequestStatus.Confirmed && (
           <button className={buttonStyles}>Pay</button>
         )}
-        {requestStatus === RequestStatus.Payed && (
+        {/* {requestStatus === RequestStatus.Payed && (
           <button className={buttonStyles}>Invoice</button>
-        )}
+        )} */}
       </div>
     </div>
   );

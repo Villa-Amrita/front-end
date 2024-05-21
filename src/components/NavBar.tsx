@@ -82,11 +82,11 @@ const NavBar = () => {
                 My Bookings
               </Link>
             </li>
-            <li className={itemOutlineStyles}>
+            {/* <li className={itemOutlineStyles}>
               <Link href={"/attractions"} className={itemStyles}>
                 Attractions
               </Link>
-            </li>
+            </li> */}
             <li className={itemOutlineStyles}>
               <button
                 id="logout-button"
